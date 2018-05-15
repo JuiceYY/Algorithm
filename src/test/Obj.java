@@ -3,7 +3,7 @@ package test;
 /**
  * Created by 12694 on 18-5-14.
  */
-public class Test implements Comparable<Test> {
+public class Obj implements Comparable<Obj>{
     public int getData() {
         return data;
     }
@@ -14,8 +14,8 @@ public class Test implements Comparable<Test> {
 
     private int data;
 
-    public int compareTo(Test test){
-        if(this.data < test.getData()) return -1;
+    public int compareTo(Obj obj){
+        if(this.data < obj.getData()) return -1;
         else return 1;
     }
 
