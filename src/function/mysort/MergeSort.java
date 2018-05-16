@@ -9,7 +9,7 @@ public class MergeSort extends MySort {
 
     public static void sort(Comparable[] a){
         //统一对外接口
-        tmp = new Comparable[a.length]; //一次性分配好额外空间，不在递归过程中分配！！
+        tmp = new Comparable[a.length];
         sort(a, 0, a.length-1);
     }
     private static void sort(Comparable[] a, int low, int high){
@@ -26,19 +26,26 @@ public class MergeSort extends MySort {
             tmp[i] = a[i];
         }
 
-        int idx = low, i = low, j = mid+1;
-        while(i <= mid && j <= high){
-            if(less(tmp[i], tmp[j])){
-                a[idx++] = tmp[i++];
-            }else{
-                a[idx++] = tmp[j++];
-            }
-        }
-        while (i <= mid){
-            a[idx++] = tmp[i++];
-        }
-        while (j <= high){
-            a[idx++] = tmp[j++];
+        int i = low, j = mid+1;
+//        while(i <= mid && j <= high){
+//            if(less(tmp[i], tmp[j])){
+//                a[idx++] = tmp[i++];
+//            }else{
+//                a[idx++] = tmp[j++];
+//            }
+//        }
+//        while (i <= mid){
+//            a[idx++] = tmp[i++];
+//        }
+//        while (j <= high){
+//            a[idx++] = tmp[j++];
+//        }
+
+        for(int idx = low; idx <= high; idx++){
+            if(i > mid) a[idx] = tmp[j++];
+            else if(j > high) a[idx] = tmp[i++];
+            else if(less(tmp[j], tmp[i])) a[idx] = tmp[j++];
+            else a[idx] = tmp[i++];
         }
     }
 }

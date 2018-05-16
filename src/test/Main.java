@@ -10,6 +10,8 @@ import java.util.Scanner;
  */
 public class Main {
 
+    private static Obj[] cobj;
+
     private static void showAndCompare(String alg, Obj[] a){
         //如果传接口，怎么让传的接口参数可以直接show()?
         double totleTime = SortCompare.customInputTime(alg, a);
@@ -39,11 +41,12 @@ public class Main {
 //        }
 //        System.out.println();
 
-        String[] algs = {"SelectionSort", "InsertionSort"};
+        cobj = new Obj[obj.length];
+        String[] algs = {"QuickSort", "MergeSort", "SelectionSort", "InsertionSort"};
         for (String alg : algs){
             //这里要对需要排序的数组做一个深拷贝, 可以实现Cloneable接口
-            Obj[] cobj = new Obj[n];
-            for(int i = 0; i < n; i++){
+//            Obj[] cobj = new Obj[n];
+            for(int i = 0; i < obj.length; i++){
                 cobj[i] = new Obj();
                 cobj[i].setData(obj[i].getData());
             }

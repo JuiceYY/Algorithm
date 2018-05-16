@@ -4,18 +4,25 @@ package function.mysort;
  * Created by 12694 on 18-5-15.
  */
 public class SortCompare {
+
+//    private static String[] algs = {"SelectionSort", "InsertionSort", "MergeSort", "QuickSort"};
+
     public static double time(String alg, Comparable[] a){
         long startTime = System.nanoTime();
         if(alg.equals("SelectionSort")) SelectionSort.sort(a);
-        if(alg.equals("InsertionSort")) InsertionSort.sort(a);
+        else if(alg.equals("InsertionSort")) InsertionSort.sort(a);
+        else if(alg.equals("QuickSort"))  QuickSort.sort(a);
+        else if(alg.equals("MergeSort")) MergeSort.sort(a);
+        else System.out.println("请在SortCompare.time()中添加排序");
         long endTime = System.nanoTime();
         return (double) (endTime-startTime) /1000000000;
     }
 
     public static double randomInputTime(String alg, int n, int t){
         //t组数据，每组数据n个数
-        double totle = 0.0;
+
         Double[] a = new Double[n];
+        double totle = 0.0;
         for(int i = 0; i < t; i++){
             for(int j = 0; j < n; j++){
                 a[j] = Math.random();
@@ -38,7 +45,7 @@ public class SortCompare {
         int n = Integer.parseInt(args[0]);
         int t = Integer.parseInt(args[1]);
 
-        String[] algs = {"SelectionSort", "InsertionSort", "MergeSort"};
+        String[] algs = {"SelectionSort", "InsertionSort", "MergeSort", "QuickSort"};
 
         Double[] ts = new Double[algs.length];
         System.out.println("For " + n + " random numbers: ");
