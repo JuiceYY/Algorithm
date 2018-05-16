@@ -33,13 +33,19 @@ public class SortCompare {
     }
 
     public static void main(String[] args) {
-        String alg1 = args[0];
-        String alg2 = args[1];
-        int n = Integer.parseInt(args[2]);
-        int t = Integer.parseInt(args[3]);
-        double t1 = randomInputTime(alg1,n,t);
-        double t2 = randomInputTime(alg2, n, t);
-        System.out.println("For " + n + " random doubles");
-        System.out.println(alg1 + " wastes " + t1 + " m; while "+ alg2 + " wastes " + t2 + " m.");
+//        String alg1 = args[0];
+//        String alg2 = args[1];
+        int n = Integer.parseInt(args[0]);
+        int t = Integer.parseInt(args[1]);
+
+        String[] algs = {"SelectionSort", "InsertionSort", "MergeSort"};
+
+        Double[] ts = new Double[algs.length];
+        System.out.println("For " + n + " random numbers: ");
+        for(int i = 0; i < algs.length; i++){
+            ts[i] = randomInputTime(algs[i], n, t);
+            System.out.println(algs[i] + " wastes " + ts[i]/t + " m; ");
+        }
+
     }
 }
